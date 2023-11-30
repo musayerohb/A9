@@ -7,62 +7,71 @@ import java.util.*;
  *  @version CSC 112, 20 November 2006
  */
 public class Heap<E extends Comparable<E>> {
-    /** Elements of the heap are stored in a ArrayList */ 
+    /** Elements of the heap are stored in a ArrayList
+     * @attribute storage (ArrayList<E>) The ArrayList storing the heaps
+     */ 
     private ArrayList<E> storage;
-    private int sizeToConsider;
 
     /** Default constructor creates an empty heap */
     public Heap() {
         storage = new ArrayList<E>();
-        
     }
     
-    /** Copy constructor creates an empty heap for heapsort method */
+    /** Copy constructor creates an empty heap for heapsort method
+     * @param array (ArrayList<E>) The array being made into a heap
+    */
     private Heap(ArrayList<E> array) {
         storage = array;
-
     }
-
+    /** Gets the size of the heap
     /** @return  heap size */
     public int size() {
         return storage.size();
     }
-
-    /** @return largest element in heap */
+    /** Gets the largest element in the heap
+     * @return largest element in heap */
     public E peekTop() {
         return storage.get(0);
     }
 
-    /** @return index of parent */ 
+    /** Gets the index of the parent
+     * @param pos (int) the parent
+     * @return index of parent */ 
     private static int parent(int pos) {
         //FILL IN
         int parentpos = (pos - 1)/2;
         return parentpos;
-        
-
     }
 
-    /** @return index of left child */
+    /** Gets the index of the left child
+     * @param pos (int) The left child
+     * @return index of left child */
     private static int leftChild(int pos) {
         //FILL IN
         int leftChild = (2 * pos) + 1;
         return leftChild;
-
     }
 
-    /** @return index of right child */
+    /** Gets the index of the right child
+     * @param pos (int) The right child
+     * @return index of right child */
     private static int rightChild(int pos) {
         //FILL IN
         int rightChild = (2*pos) + 2;
         return rightChild;
     }
 
-    /** @return T/F does left child exist in tree? */
+    /** Checks if the left child exists in the binary tree or not
+     * @param pos (int) The left child
+     * @return T/F does left child exist in tree? */
     private boolean hasLeftChild(int pos) {
         return (leftChild(pos)<size());
     }
 
-    /** @return T/F does right child exist in tree? */
+    /** Checks if the right child exists in the binary tree or not
+
+     * @param pos The right child
+     * @return T/F does right child exist in tree? */
     private boolean hasRightChild(int pos) {
         return (rightChild(pos)<size());
     }
@@ -102,9 +111,6 @@ public class Heap<E extends Comparable<E>> {
      *  @return  true iff the first is bigger than the second
      */
     private boolean isBigger(int pos1, int pos2) {
-        //Comparable c1 = storage.get(pos1);
-        //Comparable c2 = storage.get(pos2);
-        //return c1.compareTo(c2) > 0;
         return storage.get(pos1).compareTo(storage.get(pos2)) > 0;
     }
 
@@ -144,12 +150,13 @@ public class Heap<E extends Comparable<E>> {
             else {
                 done = true;
             }
-            // You should use the isBigger, leftChild, and rightChild methods.
-	    // also hasLeftChild and hasRightChild.
+            
         }
     }
 
-    /**Overloaded bubbleDown method */
+    /**Overloaded bubbleDown method
+     * @param validHeapPortion (int) The portion of the heap being bubbled down
+    */
     public void bubbleDown(int validHeapPortion) {
         int pos = 0;
         boolean done = false;
@@ -167,9 +174,7 @@ public class Heap<E extends Comparable<E>> {
         else {
             done = true;
         }
-
-        // You should use the isBigger, leftChild, and rightChild methods.
-    // also hasLeftChild and hasRightChild.
+        
     }
     }
 
@@ -193,8 +198,6 @@ public class Heap<E extends Comparable<E>> {
         storage.set(0, last);
 
         bubbleDown();
-        // storage.add(top);
-        
         
         return top;
     }
@@ -210,10 +213,6 @@ public class Heap<E extends Comparable<E>> {
         // FILL IN
         boolean done = false;
 
-        // if (isBigger(pos, parent(pos))) {
-        //     swapWithParent(pos);
-        // }
-
         while (!done) {
 
             if (isBigger(pos, parent(pos))) {
@@ -224,30 +223,9 @@ public class Heap<E extends Comparable<E>> {
             }
             
             else {
-                // if (hasRightChild(parent(pos)) && isBigger(pos, rightChild(parent(pos)))){
-                //     swapWithRightChild(pos);
-                // }
-
-                // if (hasLeftChild(parent(pos)) && isBigger(leftChild(parent(pos)), pos)) {
-                //     swapWithLeftChild(pos);
-                // }
                 done = true;
             }
 
-            
-            // if (hasLeftChild(parent(pos)) && isBigger(leftChild(parent(pos)), pos)) {
-            // if (hasLeftChild(parent(pos)) && isBigger(leftChild(parent(pos)), pos)) {
-            //     swapWithLeftChild(pos);
-            // }
-            // else if (hasRightChild(parent(pos)) && isBigger(pos, rightChild(parent(pos)))){
-            //     swapWithRightChild(pos);
-            // }
-            // else if (pos > parent(pos)) {
-            //     swapWithParent(pos);            
-            //
-            
-            // You should use the isBigger, leftChild, and rightChild methods.
-	    // also hasLeftChild and hasRightChild.
         }
     }
 
@@ -284,33 +262,20 @@ public class Heap<E extends Comparable<E>> {
         // FILL IN
         Heap heap = new Heap(v);
         
-        //heapify
+        //Heapifies the heap object (Phase 1 of heapSort)
         for (int i = 0; i < heap.storage.size(); i++) {
             heap.bubbleUp(i);
         }
 
+        //Phase 2 of heapSort
         int validHeapPortion = heap.storage.size();
-        // int i = 0;
-
 
         while (validHeapPortion > 0) {
             heap.swap(validHeapPortion);
             validHeapPortion--;
             heap.bubbleDown(validHeapPortion);
-            // i++;
         }
-        // for (int i = 0; i < validHeapPortion; i++) {
-        //     heap.bubbleUp(i);
-        //     heap.swap(validHeapPortion);
-        //     heap.bubbleDown();
-            
-        // }
-        // Phase 2: Need to program to bubble down while still keeping track of existing nodes
         
-        // elements in heap starts at 0 regardless
-        // call each time you bubbl
-        // call each time you bubbl
-        // gradually grow it using calls to insert, until the entire array has been heapified.
         System.out.println(heap.storage.toString());
 
     }
@@ -331,62 +296,4 @@ public class Heap<E extends Comparable<E>> {
         System.out.println("");
     }
 
-    public static void main(String[] args) {
-        // Heap<Integer> h = new Heap<Integer>();
-        // h.insert(38);
-        // h.insert(24);
-        // h.insert(22);
-        // h.insert(3);
-        // h.insert(15);
-        // h.insert(5);
-        // h.insert(12);
-        // h.insert(1);
-        // h.insert(2);
-        // h.insert(7);
-        // h.insert(1);
-        // h.insert(3);
-        // h.insert(4);
-        // System.out.println(h.storage.toString());
-        
-
-        
-        // int SIZEEEEE = h.storage.size();
-        // for (int i = 0; i < SIZEEEEE; i++) {
-        //     System.out.println(h.popTop());
-        //     System.out.println("----");
-
-        // }
-
-        // h.print();
-        // System.out.println("----");
-        // System.out.println(h.popTop());
-        // h.print();
-        // System.out.println("----");
-        // System.out.println(h.popTop());
-        // h.print();
-        // System.out.println("----");
-        // System.out.println(h.popTop());
-        // h.print();
-
-
-        Integer arr[] = {-2,3,9,-7,1,2,6,-3};
-        ArrayList<Integer> al = new ArrayList<>(Arrays.asList(arr));
-        heapSort(al);
-        
-        
-        // h.insert(40);
-        // h.storage.add(43);
-        // h.storage.add(33);
-        // h.print();
-
-        // System.out.println("---");
-        // h.bubbleDown();
-        // // for (int i = 0; i < h.storage.size(); i++) {
-        // //     h.bubbleUp(i);
-        // // }
-        // // h.bubbleUp(h.storage.indexOf(40));
-
-        // h.print();
-
-    }
 }

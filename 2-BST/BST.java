@@ -6,26 +6,39 @@
  */
 public class BST<E extends Comparable<E>> extends BinaryTree<Comparable<E>> implements BST_Ops<E> {
 
-    /** leaf constructor */
+    /** Leaf constructor
+     * @param data (E) The data being taken in for the constructor
+    */
     public BST(E data) {
         super(data);
     }
 
-    /** branch constructor */
+    /** Branch constructor
+     * @param data (E) The data being taken in for the constructor
+     * @param left (BST<E>) The left branch
+     * @param right (BST<E>) The right branch
+    */
     public BST(E data, BST<E> left, BST<E> right) {
         super(data, left, right);
     }
 
-    /** accessor */
+    /** Accessor
+     * @return The left branch of the binary tree
+    */
     public BST<E> getLeft() {
         return (BST<E>) super.getLeft();
     }
-
+    
+    /** Accessor
+     * @return The right branch of the binary tree
+    */
     public BST<E> getRight() {
         return (BST<E>) super.getRight();
     }
 
-    /** manipulator */
+    /** Manipulator
+     * @param left (BST <E>) Allows changes to the value of the left branch
+    */
     public void setLeft(BST<E> left) {
         if (left instanceof BST<E>) {
             // this.left = left;
@@ -35,6 +48,9 @@ public class BST<E extends Comparable<E>> extends BinaryTree<Comparable<E>> impl
         }
     }
 
+    /** Manipulator
+     * @param right (BST <E>) Allows changes to the value of the right branch
+    */
     public void setRight(BST<E> right) {
         if (right instanceof BST<E>) {
             // this.right = right;
@@ -44,15 +60,16 @@ public class BST<E extends Comparable<E>> extends BinaryTree<Comparable<E>> impl
         }
     }
 
-    /** Determines whether a tree is empty */
+    /** Determines whether a tree is empty
+     * @param node (BST<E>) The node being checked
+    */
     public boolean isEmpty(BST<E> node) {
         return (node == null);
     }
 
     /**
      * Returns the node of the given element, or null if not found
-     *
-     * @param query The element to search
+     * @param data The element to search
      * @return the node of the given element, or null if not found
      */
     public BST<E> lookup(E data) {
@@ -80,7 +97,6 @@ public class BST<E extends Comparable<E>> extends BinaryTree<Comparable<E>> impl
 
     /**
      *  Inserts a new node into the tree
-     *
      *  @param data The element to insert
      */
     public void insert(E data) {

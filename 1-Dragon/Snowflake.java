@@ -44,14 +44,6 @@ class Snowflake extends JComponent {
     Point p2 = new Point(p1.x + dx / 3, p1.y + dy / 3);
     Point p3 = new Point(p1.x + dx / 2 + dy * sqrtValue / 6, p1.y - dx * sqrtValue / 6 + dy / 2);
     Point p4 = new Point(p5.x - dx/3, p5.y - dy/3);
-    
-    
-    // x2 = x1+dx/3
-    // y2 = y1+dy/3
-    // x3 = x1+dx/2+dy*sqrt(3)/6
-    // y3 = y1-dx*sqrt(3)/6+dy/2
-    // x4 = x5-dx/3
-    // y4 = y5-dy/3
 
     // WRITE THE RECURSIVE CODE HERE:
     if (rank == 0) {

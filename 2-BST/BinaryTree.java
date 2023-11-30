@@ -5,10 +5,10 @@
  *  @version CSC 212, November 2021
  */
 public class BinaryTree<E> {
-    /** The value at this node */
+    /** The value at this node*/
     private E data;
 
-    /** Left child of this node */
+    /** Left child of this node*/
     private BinaryTree<E> left;
 
     /** Right child of this node */
@@ -98,6 +98,7 @@ public class BinaryTree<E> {
 	      return inorderString(this);
     }
 
+    /** Prints the binary tree's data in preorder form */
     public static <T> String preorderString(BinaryTree<T> t) {
         if (t==null) {
             return "";

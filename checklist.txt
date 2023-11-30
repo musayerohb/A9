@@ -30,16 +30,16 @@ ___YES__ 1 pt: Implements lookup method correctly
 
 ___YES__ 1 pt: Implements insert method correctly
 
-_____ 1 pt: Implements delete method correctly
+__NO__ 1 pt: Implements delete method correctly
 
-_____ 1 pt: Implements left and right rotation methods correctly
+__NO__ 1 pt: Implements left and right rotation methods correctly
 
 
 ### Great Recursive Conversions
 
-_____ 2 pts: Implements tree to DLL conversion correctly
+__NO__ 2 pts: Implements tree to DLL conversion correctly
 
-_____ 2 pts: Implements array to binary tree conversion correctly
+__NO__ 2 pts: Implements array to binary tree conversion correctly
 
 
 ### Heaps of Fun
