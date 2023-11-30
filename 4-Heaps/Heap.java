@@ -244,6 +244,10 @@ public class Heap<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * Swaps the root of a given heap with the bottom-most element.
+     * @param size The index of the heap's bottom-most element, while doing in-place heapsort.
+     */
     public void swap(int size) {
         E top = peekTop();
 

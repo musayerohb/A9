@@ -55,7 +55,7 @@ ___YES__ 1 pt: Implements heapsort correctly
 
 ## Kudos:
 
-_____ (kudos) Complete all four mini-projects
+__NO__ (kudos) Complete all four mini-projects
 
 
 ## General Items:
@@ -76,6 +76,6 @@ __YES___ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
       __YES__ Methods avoid confusing side effects
 
-_____ 1 pt: All required files included with submission (including completed checklist file)
+___YES__ 1 pt: All required files included with submission (including completed checklist file)
 
-_____ 1 pt: readme.md contains reflection on the assignment
+___YES__ 1 pt: readme.md contains reflection on the assignment
